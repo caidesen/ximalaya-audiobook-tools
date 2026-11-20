@@ -4,7 +4,7 @@
 
 ## 配置文件说明
 
-程序使用 `config.json` 文件来配置输入和输出参数。配置文件格式如下：
+在 `config.json` 中设置输入文件、输入目录和输出目录：
 
 ```json
 {
@@ -99,52 +99,27 @@ uv run python main.py
 }
 ```
 
-您需要根据实际需求修改这个配置文件。
+修改配置后再运行解密。
 
 ## 错误处理
 
-程序会验证配置文件的有效性：
+运行前会检查配置：
 
 - 单文件模式下，检查 `input_files` 中的所有文件是否存在
 - 批量模式下，检查 `input_directory` 是否存在
 - 如果配置有误，程序会显示具体错误信息并退出
 
-## 示例场景
-
-### 场景1: 解密少量指定文件
-
-```json
-{
-    "input_files": [
-        "./downloads/song1.xm",
-        "./downloads/song2.xm"
-    ],
-    "output_directory": "./my_music",
-    "batch_mode": false
-}
-```
-
-### 场景2: 批量处理整个目录
-
-```json
-{
-    "input_directory": "./all_xm_files",
-    "output_directory": "./decrypted",
-    "batch_mode": true
-}
-```
-
 ## 注意事项
 
 - 确保 `xm_encryptor.wasm` 文件与程序在同一目录下
-- 配置文件使用UTF-8编码
+- 配置文件使用 UTF-8 编码
 - 路径可以使用相对路径或绝对路径
 - 输出目录会自动创建（如果不存在）
-- 本工具仅供学习交流使用，严禁用于商业用途
+- 仅供个人学习、研究和自用，不得用于商业用途；使用前请阅读 [使用范围与免责声明](README.md#使用范围与免责声明)。
 
 ## 整理为 Audiobookshelf 有声书
 
-解密后可运行独立整理命令，一次处理一部书。无需修改 `config.json`：
+已有解密音频可直接整理，一次处理一部书，无需修改 `config.json`：
 
 ```bash
 # 先预览：替换为实际的专辑目录和书名
@@ -161,7 +136,7 @@ uv run python organize.py \
   --book "诡秘之主"
 ```
 
-默认每组 200 集，通过 `--group-size 100` 可以改为每组 100 集；省略 `--book` 时使用输入目录名。示例结果：
+默认每碟 200 集，`--group-size 100` 可改为每碟 100 集；省略 `--book` 时使用输入目录名。示例结果：
 
 ```text
 abs-library/
