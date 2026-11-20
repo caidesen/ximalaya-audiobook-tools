@@ -1,0 +1,12 @@
+[project]
+name = "ximalaya-xm-decrypt"
+version = "0.1.0"
+description = "本地喜马拉雅 XM 音频解密工具"
+requires-python = ">=3.9,<3.10"
+dependencies = [
+    "mutagen",
+    "pycryptodome",
+    "wasmer==1.1.0",
+    "python-magic",
+    "wasmer-compiler-cranelift==1.1.0",
+]
